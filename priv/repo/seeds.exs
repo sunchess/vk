@@ -9,3 +9,8 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+#
+#Change the password and email when install app
+changeset = Vg.User.changeset(%Vg.User{}, %{name: "SuperAdmin", email: "example@gmail.com", password: "adminpassword"})
+Vg.Repo.insert!(changeset)
+

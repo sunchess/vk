@@ -14,14 +14,15 @@ defmodule Vg.User do
   Builds a changeset based on the `struct` and `params`.
   """
   def changeset(struct, params \\ %{}) do
+    IO.inspect(params[:password])
     struct
-    |> cast(params, [:name, :email, :crypted_password])
+    |> cast(params, [:name, :email, :password])
     |> unique_constraint(:email)
     |> validate_format(:email, ~r/@/)
     |> validate_length(:password, min: 5)
     |> validate_required([:name])
-    |> put_change(:crypted_password, hashed_password(params["password"]))
-    |> put_change(:email, String.downcase(params["email"]))
+    |> put_change(:crypted_password, hashed_password(params[:password]))
+    |> put_change(:email, String.downcase(params[:email]))
   end
 
   defp hashed_password(password) do
