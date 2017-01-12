@@ -39,6 +39,7 @@ defmodule Vg.Mixfile do
      {:comeonin, "~> 1.0"},
      {:gettext, "~> 0.11"},
      {:guardian, "~> 0.14"},
+     {:phoenix_slime, "~> 0.8.0"},
      {:cowboy, "~> 1.0"}]
   end
 

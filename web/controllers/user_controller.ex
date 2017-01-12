@@ -1,7 +1,11 @@
 defmodule Vg.UserController do
   use Vg.Web, :controller
+  #use Guardian.Phoenix.Controller
 
   alias Vg.User
+
+  plug Guardian.Plug.EnsureAuthenticated, handler: Vg.SessionController
+  plug Guardian.Plug.VerifySession
 
   def index(conn, _params) do
     users = Repo.all(User)

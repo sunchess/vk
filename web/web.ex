@@ -52,6 +52,7 @@ defmodule Vg.Web do
       import Vg.Router.Helpers
       import Vg.ErrorHelpers
       import Vg.Gettext
+      import Vg.ViewHelpers
     end
   end
 

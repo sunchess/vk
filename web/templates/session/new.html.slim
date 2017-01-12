@@ -1,0 +1,19 @@
+h1 Sing in
+
+= form_for @conn, session_path(@conn, :create), [as: :session], fn f ->
+  = if f.errors != [] do
+    div class="alert alert-danger"
+      p = gettext "Oops, something went wrong! Please check the errors below:"
+
+  .form-group
+    label= gettext("Email")
+    = email_input f, :email, class: "form-control"
+    = error_tag f, :email
+
+  .form-group
+    label= gettext("Password")
+    = password_input f, :password, class: "form-control"
+    = error_tag f, :password
+
+  .form-group
+    = submit gettext("Sign in"), class: "btn btn-primary"
