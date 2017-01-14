@@ -1,4 +1,4 @@
-<h2>Show user</h2>
+<h2><%= gettext("Show User") %></h2>
 
 <ul>
 
@@ -13,11 +13,12 @@
   </li>
 
   <li>
-    <strong>Crypted password:</strong>
-    <%= @user.crypted_password %>
+    <strong>Added groups:</strong>
+    <%= 3 %>
   </li>
 
 </ul>
 
 <%= link "Edit", to: user_path(@conn, :edit, @user) %>
+ |
 <%= link "Back", to: user_path(@conn, :index) %>

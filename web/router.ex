@@ -23,6 +23,7 @@ defmodule Vg.Router do
 
     get "/", PageController, :index
     resources "/users", UserController
+    resources "/groups", GroupController
     resources "/session", SessionController, only: [:new, :create]
     get "/session/delete", SessionController, :delete, as: :delete_session
   end

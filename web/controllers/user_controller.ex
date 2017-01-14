@@ -8,13 +8,13 @@ defmodule Vg.UserController do
   plug Guardian.Plug.VerifySession
 
   def index(conn, _params) do
-    users = Repo.all(User)
+    users = Repo.all(from u in User, order_by: :id)
     render(conn, "index.html", users: users)
   end
 
   def new(conn, _params) do
-    changeset = User.changeset(%User{})
-    render(conn, "new.html", changeset: changeset)
+    changeset = User.set_changeset(%User{})
+    render(conn, "new.html", changeset: changeset, page_title: "New user")
   end
 
   def create(conn, %{"user" => user_params}) do
@@ -37,8 +37,8 @@ defmodule Vg.UserController do
 
   def edit(conn, %{"id" => id}) do
     user = Repo.get!(User, id)
-    changeset = User.changeset(user)
-    render(conn, "edit.html", user: user, changeset: changeset)
+    changeset = User.set_changeset(user)
+    render(conn, "edit.html", user: user, changeset: changeset, page_title: "Edit user")
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do

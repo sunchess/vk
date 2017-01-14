@@ -1,0 +1,12 @@
+<h2>Edit group</h2>
+
+<%= for user <- @users do %>
+  <%= user.name %>
+
+<%end%>
+
+<%= render "form.html", changeset: @changeset,
+    action: group_path(@conn, :update, @group),
+    users: @users%>
+
+<%= link "Back", to: group_path(@conn, :index) %>

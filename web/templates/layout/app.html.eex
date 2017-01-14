@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Vg!</title>
+    <title> <%= assigns[:page_title] || "Vk Grouper"%> <%= if assigns[:page_title] do; "- Vk Grouper " end %></title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 

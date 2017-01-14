@@ -3,9 +3,10 @@
 <table class="table">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Name</th>
       <th>Email</th>
-      <th>Crypted password</th>
+      <th>Groups</th>
 
       <th></th>
     </tr>
@@ -13,9 +14,10 @@
   <tbody>
 <%= for user <- @users do %>
     <tr>
+      <td><%= user.id %></td>
       <td><%= user.name %></td>
       <td><%= user.email %></td>
-      <td><%= user.crypted_password %></td>
+      <td><%= 2 %></td>
 
       <td class="text-right">
         <%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %>
