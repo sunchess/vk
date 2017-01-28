@@ -7,6 +7,7 @@ defmodule Vg.Repo.Migrations.CreateGroup do
       add :name, :string
       add :vk_id, :integer
       add :vk_link, :string
+      add :vk_token, :string
 
       timestamps()
     end

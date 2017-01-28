@@ -19,3 +19,23 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+//
+import Vue from "vue/dist/vue.common";
+
+//show group
+new Vue({
+  el: "#show-user",
+  data: {
+    show_token: false,
+    token_message: 'Show token'
+  },
+  methods:{
+    showToken: function (e) {
+      this.show_token = !this.show_token;
+      if(this.show_token)
+        this.token_message = "Hide token";
+      else
+        this.token_message = "Show token";
+    }
+  }
+});

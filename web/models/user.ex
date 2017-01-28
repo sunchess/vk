@@ -6,6 +6,8 @@ defmodule Vg.User do
     field :email, :string
     field :crypted_password, :string
     field :password, :string, virtual: true
+    field :vk_token, :string
+    has_many :groups, Vg.Group
 
     timestamps()
   end
@@ -19,14 +21,29 @@ defmodule Vg.User do
     |> cast(params, [:name, :email, :password])
   end
 
+  def update_changeset(struct, params \\ %{}) do
+    if String.length(params["password"]) > 0 do
+      struct
+      |>cast(params, [:name, :email, :password, :vk_token])
+      |>validate_length( :password, min: 5)
+      |>put_change(:crypted_password, hashed_password(params["password"]))
+    end
+
+    struct
+    |> cast(params, [:name, :email, :password, :vk_token])
+    |> unique_constraint(:email)
+    |> validate_format(:email, ~r/@/)
+    |> validate_required([:name, :email])
+    |> put_change(:email, String.downcase(params["email"]))
+  end
+
   def changeset(struct, params \\ %{}) do
-    IO.inspect(params)
     struct
     |> cast(params, [:name, :email, :password])
     |> unique_constraint(:email)
     |> validate_format(:email, ~r/@/)
     |> validate_length(:password, min: 5)
-    |> validate_required([:name])
+    |> validate_required([:name, :email, :password])
     |> put_change(:crypted_password, hashed_password(params["password"]))
     |> put_change(:email, String.downcase(params["email"]))
   end

@@ -1,6 +1,6 @@
 <h2>Show group</h2>
 
-<ul>
+<ul id="show-group">
 
   <li>
     <strong>User:</strong>
@@ -13,7 +13,7 @@
   </li>
 
   <li>
-    <strong>Vk:</strong>
+    <strong>Vk ID:</strong>
     <%= @group.vk_id %>
   </li>
 
@@ -25,4 +25,5 @@
 </ul>
 
 <%= link "Edit", to: group_path(@conn, :edit, @group) %>
+&nbsp;|
 <%= link "Back", to: group_path(@conn, :index) %>

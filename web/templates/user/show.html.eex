@@ -1,6 +1,6 @@
 <h2><%= gettext("Show User") %></h2>
 
-<ul>
+<ul id="show-user">
 
   <li>
     <strong>Name:</strong>
@@ -15,6 +15,13 @@
   <li>
     <strong>Added groups:</strong>
     <%= 3 %>
+  </li>
+
+  <li>
+    <strong>Vk token:</strong>
+    <a v-on:click="showToken($event)">{{token_message}}</a>
+    <br/>
+    <input class="vk-token" v-show="show_token" type="text" value="<%= @user.vk_token %>">
   </li>
 
 </ul>
