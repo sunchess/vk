@@ -25,5 +25,5 @@
 </ul>
 
 <%= link "Edit", to: group_path(@conn, :edit, @group) %>
-&nbsp;|
+ |
 <%= link "Back", to: group_path(@conn, :index) %>

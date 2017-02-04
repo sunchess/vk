@@ -14,18 +14,28 @@
 
   <li>
     <strong>Added groups:</strong>
-    <%= 3 %>
-  </li>
-
-  <li>
-    <strong>Vk token:</strong>
-    <a v-on:click="showToken($event)">{{token_message}}</a>
+    <%= length(@user.groups) %>
     <br/>
-    <input class="vk-token" v-show="show_token" type="text" value="<%= @user.vk_token %>">
+    <%= for group <- @user.groups do %>
+      <%= link group.name, to: group_path(@conn, :show, group) %>
+    <% end %>
   </li>
 
+  <%= if @user.id == current_user(@conn).id do %>
+    <li>
+      <strong>Vk token:</strong>
+      <a v-on:click="showToken($event)">{{token_message}}</a>
+      <br/>
+      <input class="vk-token" v-show="show_token" type="text" value="<%= @user.vk_token %>">
+    </li>
+  <% end %>
 </ul>
 
-<%= link "Edit", to: user_path(@conn, :edit, @user) %>
+
+
+<%= link gettext("Edit"), to: user_path(@conn, :edit, @user) %>
  |
-<%= link "Back", to: user_path(@conn, :index) %>
+<%= link gettext("Back"), to: user_path(@conn, :index) %>
+
+<h4><%= gettext("How to get token?") %></h4>
+<div></div>
