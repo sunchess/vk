@@ -3,8 +3,8 @@
 <ul id="show-group">
 
   <li>
-    <strong>User:</strong>
-    <%= @group.user_id %>
+    <strong>User added:</strong>
+    <%= link @group.user.name, to: user_path(@conn, :show, @group.user.id)  %>
   </li>
 
   <li>
@@ -19,7 +19,7 @@
 
   <li>
     <strong>Vk link:</strong>
-    <%= @group.vk_link %>
+    <a href="<%= @group.vk_link %>" target="_blank"> <%= @group.vk_link %> </a>
   </li>
 
 </ul>

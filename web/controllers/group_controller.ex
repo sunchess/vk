@@ -32,7 +32,7 @@ defmodule Vg.GroupController do
   end
 
   def show(conn, %{"id" => id}, _user, _claims) do
-    group = Repo.get!(Group, id)
+    group = Group |> Repo.get!(id) |> Repo.preload(:user)
     render(conn, "show.html", group: group)
   end
 
