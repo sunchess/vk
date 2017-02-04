@@ -9,7 +9,7 @@ defmodule Vg.GroupController do
   plug Guardian.Plug.VerifySession
 
   def index(conn, _params, _user, _claims) do
-    groups = Repo.all(from g in Group, preload: [:user] )
+    groups = Repo.all( from g in Group, preload: [:user] )
     render(conn, "index.html", groups: groups)
   end
 

@@ -8,6 +8,7 @@ defmodule Vg.User do
     field :password, :string, virtual: true
     field :vk_token, :string
     has_many :groups, Vg.Group
+    has_many :vk_apps, Vg.VkApp
 
     timestamps()
   end
@@ -15,13 +16,13 @@ defmodule Vg.User do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-
   def set_changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:name, :email, :password])
   end
 
   def update_changeset(struct, params \\ %{}) do
+    #if we need to change the password
     if String.length(params["password"]) > 0 do
       struct
       |>cast(params, [:name, :email, :password, :vk_token])

@@ -1,0 +1,26 @@
+<h2>Show vk app</h2>
+
+<ul id="vk_app-list">
+
+  <li>
+    <strong>User:</strong>
+    <%= link @vk_app.user.name, to: user_path(@conn, :show, @vk_app.user) %>
+  </li>
+
+  <li>
+    <strong>App:</strong>
+    <%= @vk_app.app_id %>
+  </li>
+
+  <li>
+    <strong>App key:</strong>
+    <a v-on:click="showToken($event)">{{token_message}}</a>
+    <br/>
+    <input v-show="show_token" type="text" value="<%= @vk_app.app_key %>">
+  </li>
+
+</ul>
+
+<%= link "Edit", to: vk_app_path(@conn, :edit, @vk_app) %>
+ |
+<%= link "Back", to: vk_app_path(@conn, :index) %>

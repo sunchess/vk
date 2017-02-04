@@ -1,0 +1,29 @@
+<h2>Listing vk apps</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>App</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for vk_app <- @vk_apps do %>
+    <tr>
+      <td><%= link vk_app.user.name, to: user_path(@conn, :show, vk_app.user) %></td>
+      <td><%= vk_app.app_id %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: vk_app_path(@conn, :show, vk_app), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: vk_app_path(@conn, :edit, vk_app), class: "btn btn-default btn-xs" %>
+        <%= link "Vk settings", to: "https://vk.com/editapp?id=#{vk_app.app_id}", target: "_blank", class: "btn btn-default btn-xs"%>
+        <%= link "Delete", to: vk_app_path(@conn, :delete, vk_app), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New vk app", to: vk_app_path(@conn, :new) %>

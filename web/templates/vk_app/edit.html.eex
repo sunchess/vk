@@ -1,0 +1,6 @@
+<h2>Edit vk app</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: vk_app_path(@conn, :update, @vk_app) %>
+
+<%= link "Back", to: vk_app_path(@conn, :index) %>

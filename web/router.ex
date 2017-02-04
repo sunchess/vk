@@ -25,6 +25,7 @@ defmodule Vg.Router do
     resources "/users", UserController
     resources "/groups", GroupController
     resources "/session", SessionController, only: [:new, :create]
+    resources "/vk_apps", VkAppController
     get "/session/delete", SessionController, :delete, as: :delete_session
   end
 

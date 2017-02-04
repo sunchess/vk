@@ -39,3 +39,21 @@ new Vue({
     }
   }
 });
+
+new Vue({
+  el: "#vk_app-list",
+  data: {
+    show_token: false,
+    token_message: 'Show key'
+  },
+  methods:{
+    showToken: function (e) {
+      this.show_token = !this.show_token;
+      if(this.show_token)
+        this.token_message = "Hide key";
+      else
+        this.token_message = "Show key";
+    }
+  }
+});
+

@@ -21,6 +21,15 @@
     <% end %>
   </li>
 
+  <li>
+    <strong>Added vk apps:</strong>
+    <%= length(@user.vk_apps) %>
+    <br/>
+    <%= for vk_app <- @user.vk_apps do %>
+      <%= link vk_app.app_id, to: vk_app_path(@conn, :show, vk_app) %>
+    <% end %>
+  </li>
+
   <%= if @user.id == current_user(@conn).id do %>
     <li>
       <strong>Vk token:</strong>
@@ -37,5 +46,3 @@
  |
 <%= link gettext("Back"), to: user_path(@conn, :index) %>
 
-<h4><%= gettext("How to get token?") %></h4>
-<div></div>

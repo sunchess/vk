@@ -4,3 +4,16 @@
                         action: user_path(@conn, :create) %>
 
 <%= link "Back", to: user_path(@conn, :index) %>
+
+
+<h4><%= gettext("How to get a token?") %></h4>
+<div>
+  <%= gettext("Click on the link(s) for getting a token:") %>
+
+  <%= for app <- @vk_apps do %>
+    <%= link app.app_id, to: "https://oauth.vk.com/authorize?client_id=#{app.app_id}&scope=groups,wall,offline,photos&redirect_uri=https://oauth.vk.com/blank.html&display=page&v=5.21&response_type=token", target: "_blank"%>
+  <% end %>
+
+  <%= gettext("then confirm the access of app, copy the token from browser address and insert in to vk token field") %>
+
+</div>
